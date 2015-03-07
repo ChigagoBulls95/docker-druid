@@ -21,8 +21,8 @@ druid_config_add "druid.extensions.coordinates=[\"io.druid.extensions:mysql-meta
 if env | grep -q MYSQL_PORT_3306_TCP_ADDR; then
   druid_config_add "druid.metadata.storage.type=mysql"
   druid_config_add "druid.metadata.storage.connector.connectURI=jdbc:mysql://$MYSQL_PORT_3306_TCP_ADDR:3306/druid"
-  druid_config_add "druid.metadata.storage.connector.user=mysql"
-  druid_config_add "druid.metadata.storage.connector.password=mysql"
+  druid_config_add "druid.metadata.storage.connector.user=$MYSQL_ENV_MYSQL_USER"
+  druid_config_add "druid.metadata.storage.connector.password=$MYSQL_ENV_MYSQL_PASSWORD"
   
 fi
 
