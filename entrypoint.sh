@@ -29,10 +29,8 @@ fi
 
 if [ "$DRUID_NODE_TYPE" = "historical" ]; then
   if  env | grep -q s3_access_key && env | grep -q s3_secret_key; then
-    druid_config_alter "s@druid.s3.secretKey.*@druid.s3.secretKey=$s3_secret_key@g"
-    druid_config_alter "s@druid.s3.accessKey.*@druid.s3.accessKey=$s3_access_key@g"
-    druid_config_add "druid.storage.bucket=$s3_bucket"
-    druid_config_add "druid.storage.type=s3"
+    druid_config_alter "s@druid.s3.secretKey.*@druid.storage.type=local@g"
+    druid_config_alter "s@druid.s3.accessKey.*@druid.storage.storageDirectory=$local_storage_directory@g"
   fi
 fi
 

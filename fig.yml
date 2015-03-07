@@ -26,9 +26,7 @@ historical:
   ports:
     - 8000
   environment:
-    - s3_access_key=
-    - s3_secret_key=
-    - s3_bucket=nomi-druid-dev
+    - local_storage_directory=/tmp/
 
 broker:
   build: .
