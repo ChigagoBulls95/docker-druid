@@ -10,11 +10,11 @@ You must have docker and docker-compose installed.
 
 ##Running
 
-cd to directory 
-`docker-compose up`
+* cd to directory 
+* `docker-compose up`
 
 
 If you make changes to dockerfile.
 
-`docker-compose build`
+* `docker-compose build`
 
