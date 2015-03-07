@@ -1,5 +1,5 @@
 mysql:
-  image: mysql:latest
+  build: mysql
   environment:
     - MYSQL_ROOT_PASSWORD=doesntreallymatter
     - MYSQL_USER=druid
