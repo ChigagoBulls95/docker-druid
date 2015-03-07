@@ -22,7 +22,7 @@ if env | grep -q MYSQL_PORT_3306_TCP_ADDR; then
 fi
 
 if env | grep -q ZK_PORT_2181_TCP_ADDR; then
-  druid_config_alter "s/druid.zk.service.host=localhost/druid.zk.service.host=$ZK_PORT_2181_TCP_ADDR/g"
+  druid_config_add "druid.zk.service.host=$ZK_PORT_2181_TCP_ADDR"
   druid_config_add "druid.zk.paths.base=druid"
 fi
 
