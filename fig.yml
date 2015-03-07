@@ -41,6 +41,7 @@ overlord:
   command: overlord
   links:
     - zk:zk
+    - mysql:mysql
   ports:
     - 8000
   environment:
