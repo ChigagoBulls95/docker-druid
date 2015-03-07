@@ -16,9 +16,14 @@ druid_config_add(){
   echo -e "\n$1" >> /druid/config/$DRUID_NODE_TYPE/runtime.properties
 }
 
+druid_config_add "druid.extensions.coordinates=[\"io.druid.extensions:mysql-metadata-storage\"]"
+
 if env | grep -q MYSQL_PORT_3306_TCP_ADDR; then
-  druid_config_alter "s/druid.db.connector.connectURI=.*/druid.db.connector.connectURI=jdbc\\\:mysql\\\:\/\/$MYSQL_PORT_3306_TCP_ADDR\\\:3306\/druid/g"
-  druid_config_alter 's/\# druid.db.connector/druid.db.connector/g'
+  druid_config_add "druid.metadata.storage.type=mysql"
+  druid_config_add "druid.metadata.storage.connector.connectURI=jdbc:mysql://$MYSQL_PORT_3306_TCP_ADDR:3306/druid"
+  druid_config_add "druid.metadata.storage.connector.user=mysql"
+  druid_config_add "druid.metadata.storage.connector.password=mysql"
+  
 fi
 
 if env | grep -q ZK_PORT_2181_TCP_ADDR; then
