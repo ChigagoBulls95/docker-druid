@@ -36,17 +36,6 @@ broker:
   links:
     - zk:zk
 
-realtime:
-  build: .
-  command: realtime
-  ports:
-    - 8000
-  links:
-    - zk:zk
-    - mysql:mysql
-  environment:
-    - EXAMPLE=wikipedia
-
 overlord:
   build: .
   command: overlord
